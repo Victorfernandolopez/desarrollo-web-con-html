@@ -1,0 +1,53 @@
+/* Estilos para el encabezado */
+#encabezado-portafolio {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-bottom: 2px solid #ccc;
+}
+
+.saludo {
+    font-family: 'Georgia', serif;
+    font-size: 2.5em;
+    text-align: center;
+    color: #222;
+}
+
+/* Estilos para el nombre */
+.nombre-titulo {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 2em;
+    text-align: center;
+    margin-top: 10px;
+    color:brown;
+}
+
+/* Estilos para la descripción */
+.texto-descriptivo {
+    font-family: 'Arial', sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 20px;
+    color: #444;
+}
+
+/* Estilos para el enlace e imagen de LinkedIn */
+.enlace-linkedin {
+    text-decoration: none;
+}
+
+.imagen-linkedin {
+    display: block;
+    margin: 0 auto;
+    border: 2px solid #ccc;
+    transition: border-color 0.3s;
+}
+
+.imagen-linkedin:hover {
+    border-color: #0073b1;
+}
+
+.descripcion-imagen {
+    text-align: center;
+    font-size: 1em;
+    margin-top: 10px;
+}
