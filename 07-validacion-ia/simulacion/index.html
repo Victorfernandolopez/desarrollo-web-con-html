@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario con Validación Simulada</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <h1>Formulario con Validación Simulada</h1>
+    </header>
+
+    <form id="contactFormSimulacion" novalidate>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+        <br>
+
+        <label for="email">Correo Electrónico:</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+        <br>
+
+        <label for="mensaje">Mensaje:</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+        <br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Contenedor para mostrar mensajes de error -->
+    <div id="errorMessageSimulacion" style="color:red;"></div>
+
+    <!-- Enlace al archivo JavaScript de validación simulada -->
+    <script src="simulacion.js"></script>
+</body>
+
+</html>
