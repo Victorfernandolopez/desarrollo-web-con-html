@@ -286,4 +286,143 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
 
 ---
 
+### 6. **Desarrollo de Formularios Básicos**  
+   - **Aprendido**:  
+     - Creación de formularios en HTML utilizando `<form>`, `<input>`, `<textarea>`, y `<button>`.  
+     - Uso correcto de etiquetas `<label>` para mejorar la accesibilidad y relacionarlas con los campos del formulario.  
+   - **Ejemplo práctico** (archivo: `06-formularios/index.html`):
+     ```html
+     <!DOCTYPE html>
+     <html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Formulario de Contacto</title>
+         <link rel="stylesheet" href="styles.css">
+     </head>
+     <body>
+         <!-- Encabezado de la página -->
+         <header>
+             <h1>Formulario de Contacto</h1>
+         </header>
+        
+         <!-- Formulario para recopilar datos del usuario -->
+         <form action="/ruta-del-servidor" method="POST">
+             <!-- Campo para el nombre -->
+             <label for="nombre">Nombre:</label>
+             <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+            
+             <!-- Campo para el correo electrónico -->
+             <label for="email">Correo Electrónico:</label>
+             <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+            
+             <!-- Campo para el mensaje -->
+             <label for="mensaje">Mensaje:</label>
+             <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+            
+             <!-- Botón para enviar el formulario -->
+             <button type="submit">Enviar</button>
+         </form>
+     </body>
+     </html>
+
+     ```
+   - **Archivo CSS específico (ubicado en `07-validacion-ia/styles.css`):**
+     ```css
+     /* Estilos generales para el cuerpo del documento */
+     body {
+         font-family: Arial, Helvetica, sans-serif;
+         margin: 20px;
+         background-color: #f5f5f5;
+     }
+
+     /* Estilos para el encabezado */
+     header h1 {
+         color: #333;
+         text-align: center;
+     }
+
+     /* Estilos para el formulario */
+     form {
+         max-width: 600px;
+         margin: 0 auto;
+         padding: 20px;
+         background-color: #fff;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+
+     /* Estilos para las etiquetas de los campos del formulario */
+     form label {
+         display: block;
+         margin-bottom: 8px;
+         font-weight: bold;
+         color: #333;
+     }
+
+     /* Estilos para los campos de entrada de texto y correo electrónico */
+     form input[type="text"],
+     form input[type="email"],
+     form textarea {
+         width: 100%;
+         padding: 10px;
+         margin-bottom: 20px;
+         border: 1px solid #ccc;
+         border-radius: 3px;
+         box-sizing: border-box;
+     }
+
+     /* Estilos para el campo de texto del mensaje */
+     form textarea {
+         height: 150px;
+         resize: vertical;
+     }
+
+     /* Estilos para el botón de envío */
+     form button[type="submit"] {
+         width: 100%;
+         padding: 10px;
+         background-color: #0073b1;
+         color: #fff;
+         border: none;
+         border-radius: 3px;
+         font-size: 16px;
+         cursor: pointer;
+     }
+
+     /* Estilos para el botón de envío al pasar el cursor */
+     form button[type="submit"]:hover {
+         background-color: #005f8a;
+     }
+     ```
+### Descripción de Atributos y Propiedades Nuevas:
+
+- **HTML**:
+  - `<form>`: Define un formulario HTML para la entrada de datos del usuario.
+  - `action`: Especifica la URL a la que se enviarán los datos del formulario.
+  - `method`: Define el método HTTP para enviar los datos del formulario (`POST` en este caso).
+  - `<label>`: Etiqueta para un elemento de formulario, mejora la accesibilidad.
+  - `for`: Atributo de `<label>` que asocia la etiqueta con un elemento de formulario mediante su `id`.
+  - `<input>`: Campo de entrada de datos, puede ser de varios tipos (`text`, `email`).
+  - `placeholder`: Texto que aparece en el campo de entrada cuando está vacío.
+  - `required`: Atributo que indica que el campo es obligatorio.
+  - `<textarea>`: Campo de entrada de texto de varias líneas.
+  - `<button>`: Botón que se utiliza para enviar el formulario.
+
+- **CSS**:
+  - `max-width`: Define el ancho máximo del elemento.
+  - `margin`: Define el espacio exterior alrededor del elemento.
+  - `padding`: Define el espacio interior dentro del elemento.
+  - `background-color`: Define el color de fondo del elemento.
+  - `border`: Define el borde del elemento.
+  - `border-radius`: Define el radio de las esquinas redondeadas del borde.
+  - `box-shadow`: Aplica una sombra al elemento.
+  - `display`: Define cómo se muestra el elemento (por ejemplo, `block`).
+  - `width`: Define el ancho del elemento.
+  - `box-sizing`: Define cómo se calculan los anchos y altos del elemento (`border-box` incluye el padding y el borde en el cálculo).
+  - `resize`: Permite cambiar el tamaño del elemento (`vertical` permite cambiar solo la altura).
+  - `cursor`: Define el tipo de cursor que se muestra cuando el ratón está sobre el elemento.
+  - `transition`: Define la transición suave entre dos estados de un elemento.
+
 
