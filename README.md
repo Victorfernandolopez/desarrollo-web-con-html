@@ -426,3 +426,180 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
   - `transition`: Define la transición suave entre dos estados de un elemento.
 
 
+### 7. **Validación de Formularios**  
+   - **Aprendido**:  
+     - Validación de formularios utilizando JavaScript para simular la validación de datos.
+   - **Ejemplo práctico** (archivo: `07-validacion-ia/simulacion/index.html`):
+     ```html
+     <!DOCTYPE html>
+     <html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Formulario con Validación Simulada</title>
+         <link rel="stylesheet" href="styles.css">
+     </head>
+     <body>
+         <!-- Encabezado de la página -->
+         <header>
+             <h1>Formulario con Validación Simulada</h1>
+         </header>
+        
+         <!-- Formulario para recopilar datos del usuario -->
+         <form id="contactFormSimulacion" novalidate>
+             <!-- Campo para el nombre -->
+             <label for="nombre">Nombre:</label>
+             <input type="text" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
+             <br>
+            
+             <!-- Campo para el correo electrónico -->
+             <label for="email">Correo Electrónico:</label>
+             <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+             <br>
+            
+             <!-- Campo para el mensaje -->
+             <label for="mensaje">Mensaje:</label>
+             <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aquí..." required></textarea>
+             <br>
+            
+             <!-- Botón para enviar el formulario -->
+             <button type="submit">Enviar</button>
+         </form>
+
+         <!-- Contenedor para mostrar mensajes de error -->
+         <div id="errorMessageSimulacion" style="color:red;"></div>
+
+         <!-- Enlace al archivo JavaScript de validación simulada -->
+         <script src="simulacion.js"></script>
+     </body>
+     </html>
+     ```
+
+   - **Archivo CSS específico (ubicado en `07-validacion-ia/simulacion/styles.css`):**
+     ```css
+     /* Estilos generales para el cuerpo del documento */
+     body {
+         font-family: Arial, Helvetica, sans-serif;
+         margin: 20px;
+         background-color: #f5f5f5;
+     }
+
+     /* Estilos para el encabezado */
+     header h1 {
+         color: #333;
+         text-align: center;
+     }
+
+     /* Estilos para el formulario */
+     form {
+         max-width: 600px;
+         margin: 0 auto;
+         padding: 20px;
+         background-color: #fff;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+
+     /* Estilos para las etiquetas de los campos del formulario */
+     form label {
+         display: block;
+         margin-bottom: 8px;
+         font-weight: bold;
+         color: #333;
+     }
+
+     /* Estilos para los campos de entrada de texto y correo electrónico */
+     form input[type="text"],
+     form input[type="email"],
+     form textarea {
+         width: 100%;
+         padding: 10px;
+         margin-bottom: 20px;
+         border: 1px solid #ccc;
+         border-radius: 3px;
+         box-sizing: border-box;
+     }
+
+     /* Estilos para el campo de texto del mensaje */
+     form textarea {
+         height: 150px;
+         resize: vertical;
+     }
+
+     /* Estilos para el botón de envío */
+     form button[type="submit"] {
+         width: 100%;
+         padding: 10px;
+         background-color: #0073b1;
+         color: #fff;
+         border: none;
+         border-radius: 3px;
+         font-size: 16px;
+         cursor: pointer;
+     }
+
+     /* Estilos para el botón de envío al pasar el cursor */
+     form button[type="submit"]:hover {
+         background-color: #005f8a;
+     }
+
+     /* Estilos para el mensaje de error */
+     #errorMessageSimulacion {
+         color: red;
+         margin-top: 20px;
+         text-align: center;
+     }
+     ```
+
+   - **Archivo JavaScript específico (ubicado en `07-validacion-ia/simulacion/simulacion.js`):**
+     ```javascript
+     // Escuchar el envío del formulario y prevenir el comportamiento por defecto
+     document.getElementById('contactFormSimulacion').addEventListener('submit', function (e) {
+         e.preventDefault();
+
+         // Obtener valores de los campos
+         const nombre = document.getElementById('nombre').value;
+         const email = document.getElementById('email').value;
+         const mensaje = document.getElementById('mensaje').value;
+
+         validarFormularioSimulacion(nombre, email, mensaje);
+     });
+
+     // Función de validación simulada
+     function validarFormularioSimulacion(nombre, email, mensaje) {
+         let error = "";
+
+         if (!email.includes("@")) {
+             error += "El correo electrónico no es válido. ";
+         }
+         if (mensaje.trim() === "") {
+             error += "El mensaje no puede estar vacío.";
+         }
+
+         if (error !== "") {
+             document.getElementById('errorMessageSimulacion').textContent = error;
+         } else {
+             document.getElementById('errorMessageSimulacion').textContent = "";
+             alert("Formulario enviado correctamente (validación simulada).");
+             // Aquí podrías simular el envío de datos
+         }
+     }
+     ```
+
+### Descripción de Atributos y Propiedades Nuevas:
+
+- **HTML**:
+  - `novalidate`: Atributo que desactiva la validación de formulario por defecto del navegador.
+  - `<textarea>`: Campo de entrada de texto de varias líneas.
+  - `placeholder`: Texto que aparece en el campo de entrada cuando está vacío.
+  - `required`: Atributo que indica que el campo es obligatorio.
+
+- **CSS**:
+  - `box-shadow`: Aplica una sombra al elemento.
+  - `resize`: Permite cambiar el tamaño del elemento (`vertical` permite cambiar solo la altura).
+
+- **JavaScript**:
+  - `addEventListener`: Método que adjunta un evento a un elemento.
+  - `preventDefault`: Método que cancela el evento si es cancelable, evitando el comportamiento por defecto.
+  - `textContent`: Propiedad que establece o devuelve el contenido textual de un nodo.
