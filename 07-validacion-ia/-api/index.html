@@ -11,7 +11,7 @@
         <h1>Formulario con validacion via API</h1>
     </header>
 
-    <form id="contactFormAPI">
+    <form id="contactFormAPI" novalidate >
         <label for="nombre">Nombre</label>
         <input type="text" id="nombre" name="nombre" placeholder="ingresa tu nombre" required>
         <br>
@@ -26,7 +26,7 @@
 
         <button type="submit">Enviar</button>
     </form>
-    <div id="errorMenssageApi" style="color:red"></div>
+    <div id="errorMensajeAPI" style="color:red"></div>
     <script src="api.js"></script>
 </body>
 </html>

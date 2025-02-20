@@ -7,15 +7,13 @@ document.getElementById('contactFormAPI').addEventListener('submit', function (e
 
     // Realizar una validación básica en el cliente
     if (!email.includes("@") || mensaje.trim() === "") {
-        document.getElementById('errorMessageAPI').textContent = "Por favor, corrige los errores en el formulario.";
+        document.getElementById('errorMensajeAPI').textContent = "Por favor, corrige los errores en el formulario.";
         return;
     } else {
-        document.getElementById('errorMessageAPI').textContent = "";
+        document.getElementById('errorMensajeAPI').textContent = "";
     }
 
-    // Simular el envío de datos a la API
-    // Reemplaza 'https://api.ejemplo.com/validar' por la URL real de la API que utilices
-    fetch('https://api.ejemplo.com/validar', {
+    fetch('http://127.0.0.1:8000/api/validar/', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -24,15 +22,15 @@ document.getElementById('contactFormAPI').addEventListener('submit', function (e
     })
         .then(response => response.json())
         .then(data => {
-            // Suponemos que la API responde con { valid: true } o { valid: false, error: "mensaje de error" }
+            console.log("Respuesta de la API:", data); // Agregar esta línea para depuración
             if (data.valid) {
                 alert("Formulario enviado correctamente (validación vía API).");
             } else {
-                document.getElementById('errorMessageAPI').textContent = data.error || "Error en la validación.";
+                document.getElementById('errorMensajeAPI').textContent = data.error || "Error en la validación.";
             }
         })
         .catch(error => {
             console.error("Error al comunicarse con la API:", error);
-            document.getElementById('errorMessageAPI').textContent = "Error al validar los datos. Intenta nuevamente.";
+            document.getElementById('errorMensajeAPI').textContent = "Error al validar los datos. Intenta nuevamente.";
         });
 });
