@@ -396,6 +396,7 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
          background-color: #005f8a;
      }
      ```
+
 ### Descripción de Atributos y Propiedades Nuevas:
 
 - **HTML**:
@@ -426,7 +427,7 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
   - `transition`: Define la transición suave entre dos estados de un elemento.
 
 
-### 7. **Validación de Formularios**  
+### 7. **Validación de Formularios(simulacion en javaScript)**  
    - **Aprendido**:  
      - Validación de formularios utilizando JavaScript para simular la validación de datos.
    - **Ejemplo práctico** (archivo: `07-validacion-ia/simulacion/index.html`):
@@ -587,6 +588,161 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
      }
      ```
 
+### 7. **Validación de Formularios(API)**  
+   - **Aprendido**:  
+     - Validación de formularios utilizandoatravez de una api generada en Django
+   - **Ejemplo práctico** (archivo: `07-validacion-ia/-api/index.html`):
+     ```html
+     <!DOCTYPE html>
+     <html lang="es">
+     <head>
+         <meta charset="UTF-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+         <title>Formulario con validacion via API</title>
+         <link rel="stylesheet" href="styles.css">
+     </head>
+     <body>
+         <header>
+             <h1>Formulario con validacion via API</h1>
+         </header>
+
+         <form id="contactFormAPI" novalidate >
+             <label for="nombre">Nombre</label>
+             <input type="text" id="nombre" name="nombre" placeholder="ingresa tu nombre" required>
+             <br>
+
+             <label for="email">Correo Electronico</label>
+             <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+             <br>
+
+             <label for="mensaje">Mensaje</label>
+             <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aqui" required></textarea>
+             <br>
+
+             <button type="submit">Enviar</button>
+         </form>
+         <div id="errorMensajeAPI" style="color:red"></div>
+         <script src="api.js"></script>
+     </body>
+     </html>
+     ```
+
+   - **Archivo CSS específico (ubicado en `07-validacion-ia/-api/styles.css`):**
+     ```css
+     /* Estilos generales para el cuerpo del documento */
+     body {
+         font-family: Arial, Helvetica, sans-serif;
+         margin: 20px;
+         background-color: #f5f5f5;
+     }
+
+     /* Estilos para el encabezado */
+     header h1 {
+         color: #333;
+         text-align: center;
+     }
+ 
+     /* Estilos para el formulario */
+     form {
+         max-width: 600px;
+         margin: 0 auto;
+         padding: 20px;
+         background-color: #fff;
+         border: 1px solid #ccc;
+         border-radius: 5px;
+         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+     }
+ 
+     /* Estilos para las etiquetas de los campos del formulario */
+     form label {
+         display: block;
+         margin-bottom: 8px;
+         font-weight: bold;
+         color: #333;
+     }
+ 
+     /* Estilos para los campos de entrada de texto y correo electrónico */
+     form input[type="text"],
+     form input[type="email"],
+     form textarea {
+         width: 100%;
+         padding: 10px;
+         margin-bottom: 20px;
+         border: 1px solid #ccc;
+         border-radius: 3px;
+         box-sizing: border-box;
+     }
+ 
+     /* Estilos para el campo de texto del mensaje */
+     form textarea {
+         height: 150px;
+         resize: vertical;
+     }
+ 
+     /* Estilos para el botón de envío */
+     form button[type="submit"] {
+         width: 100%;
+         padding: 10px;
+         background-color: #0073b1;
+         color: #fff;
+         border: none;
+         border-radius: 3px;
+         font-size: 16px;
+         cursor: pointer;
+     }
+ 
+     /* Estilos para el botón de envío al pasar el cursor */
+     form button[type="submit"]:hover {
+         background-color: #005f8a;
+     }
+ 
+     /* Estilos para el mensaje de error */
+     #errorMensajeAPI {
+         color: red;
+         margin-top: 20px;
+         text-align: center;
+     }
+     ```
+
+   - **Archivo JavaScript específico (ubicado en `07-validacion-ia/-api/api.js`):**
+     ```js
+     document.getElementById('contactFormAPI').addEventListener('submit', function (e) {
+     e.preventDefault();
+ 
+     const nombre = document.getElementById('nombre').value;
+     const email = document.getElementById('email').value;
+     const mensaje = document.getElementById('mensaje').value;
+ 
+     // Realizar una validación básica en el cliente
+     if (!email.includes("@") || mensaje.trim() === "") {
+         document.getElementById('errorMessageAPI').textContent = "Por favor, corrige los errores en el formulario.";
+         return;
+     } else {
+         document.getElementById('errorMessageAPI').textContent = "";
+     }
+ 
+     fetch('http://127.0.0.1:8000/api/validar/', {
+         method: 'POST',
+         headers: {
+             'Content-Type': 'application/json'
+         },
+         body: JSON.stringify({ nombre, email, mensaje })
+     })
+         .then(response => response.json())
+         .then(data => {
+             if (data.valid) {
+                 alert("Formulario enviado correctamente (validación vía API).");
+             } else {
+                 document.getElementById('errorMessageAPI').textContent = data.error || "Error en la validación.";
+             }
+         })
+         .catch(error => {
+             console.error("Error al comunicarse con la API:", error);
+             document.getElementById('errorMessageAPI').textContent = "Error al validar los datos. Intenta nuevamente.";
+         });
+      });
+      ```
+
 ### Descripción de Atributos y Propiedades Nuevas:
 
 - **HTML**:
@@ -603,3 +759,59 @@ Registro de mi progreso en desarrollo web, integrando HTML, CSS e IA.
   - `addEventListener`: Método que adjunta un evento a un elemento.
   - `preventDefault`: Método que cancela el evento si es cancelable, evitando el comportamiento por defecto.
   - `textContent`: Propiedad que establece o devuelve el contenido textual de un nodo.
+
+---
+
+## Instructivo para Clonar y Usar el Repositorio
+
+### Requisitos Previos
+
+- Tener instalado [Git](https://git-scm.com/).
+- Tener instalado [Python](https://www.python.org/) y [pip](https://pip.pypa.io/en/stable/).
+- Tener instalado [Django](https://www.djangoproject.com/).
+
+### Pasos para Clonar el Repositorio
+
+1. Clona el repositorio en tu máquina local:
+   ```bash
+   git clone https://github.com/Victorfernandolopez/desarrollo-web-con-html.git
+   ```
+
+2. Navega al directorio del proyecto:
+   ```bash
+   cd tu-repositorio
+   ```
+
+### Configuración del Backend en Django
+
+1. Crea un entorno virtual:
+   ```bash
+   python -m venv env
+   ```
+
+2. Activa el entorno virtual:
+   - En Windows:
+     ```bash
+     .\env\Scripts\activate
+     ```
+   - En macOS/Linux:
+     ```bash
+     source env/bin/activate
+     ```
+
+3. Instala las dependencias:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Realiza las migraciones de la base de datos:
+   ```bash
+   python manage.py migrate
+   ```
+
+5. Inicia el servidor de desarrollo:
+   ```bash
+   python manage.py runserver
+   ```
+
+6. Abre tu navegador y navega a `http://127.0.0.1:8000/` para ver la aplicación en funcionamiento.

@@ -7,10 +7,10 @@ document.getElementById('contactFormAPI').addEventListener('submit', function (e
 
     // Realizar una validación básica en el cliente
     if (!email.includes("@") || mensaje.trim() === "") {
-        document.getElementById('errorMensajeAPI').textContent = "Por favor, corrige los errores en el formulario.";
+        document.getElementById('errorMessageAPI').textContent = "Por favor, corrige los errores en el formulario.";
         return;
     } else {
-        document.getElementById('errorMensajeAPI').textContent = "";
+        document.getElementById('errorMessageAPI').textContent = "";
     }
 
     fetch('http://127.0.0.1:8000/api/validar/', {
@@ -22,15 +22,14 @@ document.getElementById('contactFormAPI').addEventListener('submit', function (e
     })
         .then(response => response.json())
         .then(data => {
-            console.log("Respuesta de la API:", data); // Agregar esta línea para depuración
             if (data.valid) {
                 alert("Formulario enviado correctamente (validación vía API).");
             } else {
-                document.getElementById('errorMensajeAPI').textContent = data.error || "Error en la validación.";
+                document.getElementById('errorMessageAPI').textContent = data.error || "Error en la validación.";
             }
         })
         .catch(error => {
             console.error("Error al comunicarse con la API:", error);
-            document.getElementById('errorMensajeAPI').textContent = "Error al validar los datos. Intenta nuevamente.";
+            document.getElementById('errorMessageAPI').textContent = "Error al validar los datos. Intenta nuevamente.";
         });
 });
