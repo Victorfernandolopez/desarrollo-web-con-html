@@ -1,11 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Formulario con validacion via API</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <header>
+        <h1>Formulario con validacion via API</h1>
+    </header>
+
+    <form id="contactFormAPI">
+        <label for="nombre">Nombre</label>
+        <input type="text" id="nombre" name="nombre" placeholder="ingresa tu nombre" required>
+        <br>
+
+        <label for="email">Correo Electronico</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+        <br>
+
+        <label for="mensaje">Mensaje</label>
+        <textarea id="mensaje" name="mensaje" placeholder="Escribe tu mensaje aqui" required></textarea>
+        <br>
+
+        <button type="submit">Enviar</button>
+    </form>
+    <div id="errorMenssageApi" style="color:red"></div>
+    <script src="api.js"></script>
 </body>
 </html>
